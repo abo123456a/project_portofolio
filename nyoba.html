@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>297Fashion - Luxury Global Store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+:root {
+    --primary: #e91e63;
+    --dark: #111;
+    --light: #f8f9fa;
+    --grey: #6c757d;
+    --glass: rgba(255, 255, 255, 0.95);
+    --gold: #d4af37;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins', sans-serif; background:#f4f4f4; scroll-behavior: smooth; color: var(--dark);}
+
+/* HEADER & NAV */
+header {
+    background: var(--dark);
+    padding: 15px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--primary);
+    cursor: pointer;
+}
+nav { display: flex; align-items: center; }
+nav a {
+    color: #fff;
+    margin-left: 25px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: 0.3s;
+    position: relative;
+}
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: var(--primary);
+    transition: 0.3s;
+}
+nav a:hover::after { width: 100%; }
+nav a:hover { color: var(--primary); }
+
+.cart-icon {
+    background: var(--primary);
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin-left: 20px;
+}
+
+/* GENDER NAV */
+.sub-nav {
+    background: var(--glass);
+    padding: 15px;
+    text-align: center;
+    position: sticky;
+    top: 70px;
+    z-index: 900;
+    border-bottom: 1px solid #ddd;
+    backdrop-filter: blur(10px);
+}
+.sub-nav button {
+    background: transparent;
+    border: 2px solid #ddd;
+    padding: 10px 25px;
+    margin: 0 8px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.3s;
+}
+.sub-nav button.active {
+    background: var(--dark);
+    color: #fff;
+    border-color: var(--dark);
+}
+
+/* MODIFIKASI HERO SECTION: BACKGROUND MENARIK & MEWAH */
+.hero {
+    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.8) 100%), 
+                url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efek Cahaya Bergerak di Background */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+    transform: skewX(-25deg);
+    animation: shine 8s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 150%; }
+    100% { left: 150%; }
+}
+
+.hero-content {
+    z-index: 2;
+    animation: fadeInUp 1s ease-out;
+    padding: 0 20px;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-content h2 {
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 20px;
+    text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+    letter-spacing: -2px;
+}
+
+.hero-content h2 span {
+    color: var(--primary);
+    display: block;
+    font-size: 40px;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 20px;
+    margin-bottom: 40px;
+    letter-spacing: 4px;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #f1f1f1;
+}
+
+.btn-shop {
+    padding: 18px 50px;
+    background: var(--primary);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 20px;
+    transition: 0.4s;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 15px 30px rgba(233, 30, 99, 0.3);
+    text-transform: uppercase;
+}
+
+.btn-shop:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 20px 40px rgba(233, 30, 99, 0.5);
+    background: #c2185b;
+}
+
+/* TRUST BADGES */
+.badges {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 6%;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
+}
+.badge-item i { font-size: 35px; color: var(--primary); margin-bottom: 15px; }
+.badge-item h4 { font-size: 15px; text-transform: uppercase; font-weight: 700; }
+
+/* PRODUCT GRID */
+.container { padding: 50px 6%; }
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.section-title h2 { 
+    font-size: 36px; 
+    font-weight: 800;
+    position: relative; 
+    display: inline-block; 
+    padding-bottom: 15px;
+}
+.section-title h2::after {
+    content: ''; width: 60px; height: 4px; background: var(--primary);
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+}
+
+.products { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.product {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+.product:hover { transform: translateY(-12px); box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
+.product-img-container { position: relative; overflow: hidden; background: #f9f9f9; }
+.product img { width: 100%; height: 400px; object-fit: cover; transition: 0.8s; }
+.product:hover img { transform: scale(1.08); }
+
+.product-content { padding: 25px; text-align: center; }
+.product-content small { color: var(--grey); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 11px; }
+.product-content h3 { margin: 10px 0; font-size: 18px; font-weight: 700; height: 50px; }
+.price { color: var(--primary); font-size: 22px; font-weight: 800; margin-bottom: 20px; }
+.add-btn {
+    width: 100%; padding: 14px; border: 2px solid var(--dark); background: transparent;
+    font-weight: 800; border-radius: 12px; cursor: pointer; transition: 0.3s;
+}
+.add-btn:hover { background: var(--dark); color: #fff; }
+
+/* CART SIDEBAR */
+#cart {
+    position: fixed; top: 0; right: -100%; width: 400px; height: 100%;
+    background: #fff; padding: 40px 30px; box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+    transition: 0.5s cubic-bezier(0.77,0,0.175,1); z-index: 2000; display: flex; flex-direction: column;
+}
+#cart-items { list-style: none; margin: 30px 0; overflow-y: auto; flex-grow: 1; }
+#cart li { 
+    display: flex; justify-content: space-between; align-items: center; 
+    padding: 15px 0; border-bottom: 1px solid #eee; 
+}
+.remove-item {
+    color: #ff4d4d; cursor: pointer; padding: 5px; transition: 0.2s;
+}
+.remove-item:hover { color: #cc0000; transform: scale(1.2); }
+
+footer { background: var(--dark); color: #888; text-align: center; padding: 50px 6%; }
+
+@media (max-width: 768px) {
+    header { padding: 15px 20px; }
+    nav a { display: none; }
+    #cart { width: 100%; }
+    .hero-content h2 { font-size: 40px; }
+    .hero-content h2 span { font-size: 20px; }
+    .hero { height: 60vh; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1 onclick="showProduk('home')">297FASHION</h1>
+    <nav>
+        <a onclick="showProduk('home')">Home</a>
+        <a onclick="setMainKategori('baju')">Baju</a>
+        <a onclick="setMainKategori('celana')">Celana</a>
+        <a onclick="setMainKategori('tas')">Tas</a>
+        <a onclick="setMainKategori('sepatu')">Sepatu</a>
+        <div class="cart-icon" onclick="toggleCart()" style="cursor:pointer">
+            <i class="fa fa-shopping-bag"></i> <span id="cart-count">0</span>
+        </div>
+    </nav>
+</header>
+
+<div class="sub-nav" id="gender-nav" style="display:none;">
+    <button id="btn-all" onclick="filterGender('all')">Semua Produk</button>
+    <button id="btn-pria" onclick="filterGender('pria')">Koleksi Pria</button>
+    <button id="btn-wanita" onclick="filterGender('wanita')">Koleksi Wanita</button>
+</div>
+
+<div id="hero-area">
+    <section class="hero">
+        <div class="hero-content">
+            <span>NEW SEASON 2026</span>
+            <h2>THE ULTIMATE<br>LUXURY STYLE</h2>
+            <p>Elegansi tingkat tinggi untuk penampilan berkelas dunia.</p>
+            <button class="btn-shop" onclick="setMainKategori('baju')">EXPLORE NOW</button>
+        </div>
+    </section>
+
+    <div class="badges">
+        <div class="badge-item">
+            <i class="fa fa-truck-fast"></i>
+            <h4>Worldwide Shipping</h4>
+        </div>
+        <div class="badge-item">
+            <i class="fa fa-gem"></i>
+            <h4>Premium Quality</h4>
+        </div>
+        <div class="badge-item">
+            <i class="fa fa-shield-halved"></i>
+            <h4>Secure Transaction</h4>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div id="produk-container"></div>
+</div>
+
+<footer>
+    <h2 style="color:#fff; margin-bottom:20px;">297FASHION</h2>
+    <p>The best luxury fashion store in Indonesia. Quality is our priority.</p>
+    <div style="margin: 20px 0; font-size: 20px;">
+        <i class="fab fa-instagram" style="margin:0 10px"></i>
+        <i class="fab fa-facebook" style="margin:0 10px"></i>
+        <i class="fab fa-twitter" style="margin:0 10px"></i>
+    </div>
+    <p>&copy; 2026 297Fashion | Premium Brand Kelompok 4</p>
+</footer>
+
+<div id="cart">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h2 style="font-size: 20px; letter-spacing: 1px;">SHOPPING BAG</h2>
+        <i class="fa fa-times" onclick="toggleCart()" style="cursor:pointer; font-size:24px;"></i>
+    </div>
+    
+    <ul id="cart-items"></ul>
+    
+    <div style="border-top: 1px solid #eee; padding-top:20px;">
+        <h4 style="font-size: 14px; margin-bottom: 10px; color: var(--grey);">METODE PEMBAYARAN</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px;">
+            <label style="border: 1px solid #ddd; padding: 10px; border-radius: 8px; cursor: pointer; font-size: 12px; display: flex; align-items: center; gap: 8px;">
+                <input type="radio" name="payment" value="Transfer Bank (BCA/Mandiri)" checked> 
+                <span><i class="fa fa-university"></i> Bank Transfer</span>
+            </label>
+            <label style="border: 1px solid #ddd; padding: 10px; border-radius: 8px; cursor: pointer; font-size: 12px; display: flex; align-items: center; gap: 8px;">
+                <input type="radio" name="payment" value="E-Wallet (QRIS/GOPAY/OVO)"> 
+                <span><i class="fa fa-qrcode"></i> E-Wallet/QRIS</span>
+            </label>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; margin-bottom:15px; align-items: center;">
+            <span style="font-weight: 500;">TOTAL ESTIMASI</span>
+            <span id="total" style="font-weight:800; color:var(--primary); font-size:22px;">Rp 0</span>
+        </div>
+        
+        <button onclick="checkout()" style="width:100%; padding:18px; background:#25D366; color:#fff; border:none; border-radius:12px; font-weight:bold; cursor:pointer; font-size:15px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s;">
+            <i class="fab fa-whatsapp" style="font-size: 20px;"></i> KONFIRMASI PEMBAYARAN
+        </button>
+        <p style="text-align: center; font-size: 11px; color: var(--grey); margin-top: 10px;">Pesanan akan diproses otomatis melalui tim admin kami.</p>
+    </div>
+</div>
+
+<script>
+let currentKategori = 'home';
+let currentGender = 'all';
+
+const produkData = [
+    {nama:"Gucci Oversize T-Shirt White", harga:8500000, img:"https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500", kat:"baju", gen:"pria"},
+    {nama:"Louis Vuitton Monogram Shirt", harga:12000000, img:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500", kat:"baju", gen:"pria"},
+    {nama:"Burberry Classic Check Shirt", harga:7500000, img:"https://images.unsplash.com/photo-1588359348347-9bc6cbb6cf97?w=500", kat:"baju", gen:"pria"},
+    {nama:"Off-White Street Hoodie", harga:9000000, img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500", kat:"baju", gen:"pria"},
+    {nama:"Chanel Tweed Luxury Jacket", harga:65000000, img:"https://images.unsplash.com/photo-1548624313-0396c75e4b1a?w=500", kat:"baju", gen:"wanita"},
+    {nama:"Dior Evening Silk Dress", harga:45000000, img:"https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=500", kat:"baju", gen:"wanita"},
+    {nama:"Zara Premium Satin Blouse", harga:950000, img:"https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=500", kat:"baju", gen:"wanita"},
+    {nama:"Prada Runway Fashion Top", harga:15000000, img:"https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500", kat:"baju", gen:"wanita"},
+    {nama:"Levi's 501 Original Blue", harga:1450000, img:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=500", kat:"celana", gen:"pria"},
+    {nama:"Balenciaga Cargo Pants Black", harga:18000000, img:"https://images.unsplash.com/photo-1624371414361-e6e8ea001116?w=500", kat:"celana", gen:"pria"},
+    {nama:"Adidas Adicolor Trackpants", harga:1100000, img:"https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=500", kat:"celana", gen:"pria"},
+    {nama:"Gucci Technical Joggers", harga:13000000, img:"https://images.unsplash.com/photo-1580906853203-f493cea9ff28?w=500", kat:"celana", gen:"pria"},
+    {nama:"Zara High-Waist Trousers", harga:899000, img:"https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=500", kat:"celana", gen:"wanita"},
+    {nama:"Dior Slim Fit Denim", harga:16000000, img:"https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500", kat:"celana", gen:"wanita"},
+    {nama:"Prada Gabardine Pants", harga:14500000, img:"https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=500", kat:"celana", gen:"wanita"},
+    {nama:"H&M Wide Leg Culottes", harga:450000, img:"https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?w=500", kat:"celana", gen:"wanita"},
+    {nama:"Louis Vuitton Keepall 55", harga:42000000, img:"https://images.unsplash.com/photo-1547949003-9792a18a2601?w=500", kat:"tas", gen:"pria"},
+    {nama:"Nike Elite Sport Backpack", harga:950000, img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500", kat:"tas", gen:"pria"},
+    {nama:"Gucci GG Supreme Messenger", harga:19000000, img:"https://images.unsplash.com/photo-1598533023411-ca65bfd200b2?w=500", kat:"tas", gen:"pria"},
+    {nama:"Hermes Birkin 25 Gold", harga:350000000, img:"https://images.unsplash.com/photo-1594223274512-ad4803739b7c?w=500", kat:"tas", gen:"wanita"},
+    {nama:"Chanel Classic Double Flap", harga:145000000, img:"https://images.unsplash.com/photo-1566150905458-1bf1fd15dcb4?w=500", kat:"tas", gen:"wanita"},
+    {nama:"Coach Leather Tabby Bag", harga:8500000, img:"https://images.unsplash.com/photo-1591561954557-26941169b49e?w=500", kat:"tas", gen:"wanita"},
+    {nama:"Nike Air Jordan 1 Chicago", harga:6500000, img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500", kat:"sepatu", gen:"pria"},
+    {nama:"Adidas Superstar Classic", harga:1600000, img:"https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500", kat:"sepatu", gen:"pria"},
+    {nama:"Balenciaga Triple S Multi", harga:17000000, img:"https://images.unsplash.com/photo-1584000302558-ce29d84121cb?w=500", kat:"sepatu", gen:"pria"},
+    {nama:"Christian Louboutin Heels", harga:14000000, img:"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500", kat:"sepatu", gen:"wanita"},
+    {nama:"Vans Old Skool Pink", harga:850000, img:"https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500", kat:"sepatu", gen:"wanita"},
+    {nama:"New Balance 530 Silver", harga:2200000, img:"https://images.unsplash.com/photo-1539185441755-769473a23570?w=500", kat:"sepatu", gen:"wanita"}
+];
+
+function setMainKategori(kat) {
+    currentKategori = kat;
+    currentGender = 'all'; 
+    document.getElementById('gender-nav').style.display = 'block';
+    document.getElementById('hero-area').style.display = 'none';
+    renderProducts();
+}
+
+function filterGender(gen) {
+    currentGender = gen;
+    renderProducts();
+}
+
+function renderProducts() {
+    const container = document.getElementById("produk-container");
+    const subNavBtns = document.querySelectorAll('.sub-nav button');
+    
+    subNavBtns.forEach(btn => btn.classList.remove('active'));
+    if(document.getElementById('btn-' + currentGender)) {
+        document.getElementById('btn-' + currentGender).classList.add('active');
+    }
+
+    if (currentKategori === 'home') {
+        document.getElementById('gender-nav').style.display = 'none';
+        document.getElementById('hero-area').style.display = 'block';
+        container.innerHTML = `
+            <div class="section-title">
+                <h2>Featured Collections</h2>
+            </div>
+            <div class="products" id="featured-grid"></div>
+        `;
+        const featured = produkData.slice(0, 3);
+        const grid = document.getElementById('featured-grid');
+        featured.forEach(p => grid.innerHTML += createProductHTML(p));
+        return;
+    }
+
+    let filtered = produkData.filter(p => p.kat === currentKategori);
+    if (currentGender !== 'all') {
+        filtered = filtered.filter(p => p.gen === currentGender);
+    }
+
+    container.innerHTML = `
+        <div class="section-title">
+            <h2 style="text-transform:uppercase">${currentKategori} ${currentGender !== 'all' ? '- ' + currentGender : ''}</h2>
+        </div>
+        <div class="products">
+            ${filtered.map(p => createProductHTML(p)).join('')}
+        </div>
+    `;
+}
+
+function createProductHTML(p) {
+    return `
+        <div class="product">
+            <div class="product-img-container">
+                <img src="${p.img}" alt="${p.nama}">
+            </div>
+            <div class="product-content">
+                <small>${p.gen}</small>
+                <h3>${p.nama}</h3>
+                <p class="price">Rp ${p.harga.toLocaleString('id-ID')}</p>
+                <button class="add-btn" onclick="addToCart('${p.nama}', ${p.harga})">ADD TO BAG</button>
+            </div>
+        </div>
+    `;
+}
+
+let cart = [];
+let total = 0;
+
+function addToCart(name, price){
+    cart.push({name, price});
+    total += price;
+    updateCartUI();
+    toggleCart();
+}
+
+function removeFromCart(index) {
+    total -= cart[index].price;
+    cart.splice(index, 1);
+    updateCartUI();
+}
+
+function updateCartUI(){
+    document.getElementById("cart-count").innerText = cart.length;
+    const list = document.getElementById("cart-items");
+    list.innerHTML = "";
+    
+    cart.forEach((item, index) => {
+        list.innerHTML += `
+            <li>
+                <div style="display:flex; flex-direction:column;">
+                    <span style="font-weight:600; font-size:14px;">${item.name}</span>
+                    <b style="color:var(--primary)">Rp ${item.price.toLocaleString('id-ID')}</b>
+                </div>
+                <i class="fa fa-trash-alt remove-item" onclick="removeFromCart(${index})" title="Hapus Item"></i>
+            </li>`;
+    });
+    
+    document.getElementById("total").innerText = "Rp " + total.toLocaleString('id-ID');
+}
+
+function toggleCart(){
+    const cartEl = document.getElementById("cart");
+    cartEl.style.right = (cartEl.style.right === "0px") ? "-100%" : "0px";
+}
+
+function checkout(){
+    if(cart.length === 0) return alert("Keranjang masih kosong!");
+    
+    const payMethod = document.querySelector('input[name="payment"]:checked').value;
+    
+    let msg = "*FORM PEMESANAN 297FASHION*%0A";
+    msg += "--------------------------------------%0A";
+    cart.forEach((item, i) => msg += `${i+1}. ${item.name} - Rp ${item.price.toLocaleString('id-ID')}%0A`);
+    msg += "--------------------------------------%0A";
+    msg += `*Total:* Rp ${total.toLocaleString('id-ID')}%0A`;
+    msg += `*Metode Bayar:* ${payMethod}%0A%0A`;
+    msg += "Mohon segera diproses, terima kasih.";
+    
+    window.open("https://wa.me/6284355587221?text=" + msg, "_blank");
+}
+
+function showProduk(kat) {
+    if(kat === 'home') {
+        currentKategori = 'home';
+        renderProducts();
+    }
+}
+
+renderProducts();
+</script>
+
+</body>
+</html>
